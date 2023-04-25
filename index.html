@@ -21,8 +21,10 @@
 
   <div id="app">
 
-   <ul>
-    <li v-for="mail in mails">{{ this.mails }}</li>
+   <div class="loader" v-if="mailList.length < 10"></div> 
+
+   <ul v-else>
+    <li v-for="mail in mailList">{{ mail }}</li>
    </ul>
 
 
