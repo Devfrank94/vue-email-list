@@ -7,17 +7,25 @@ createApp({
 
     return{
       apiUrl:'https://flynn.boolean.careers/exercises/api/random/mail',
+
+      mails: []
   
     }
 
   },
 
   methods: {
-    getApi(){
+    getMails(){
 
-      axios.get(this.apiUrl)
-      .then(result => {
-        console.log(result.data);
+      axios.get(this.apiUrl, {
+        params: {
+          results: 10
+        }
+      })
+      
+      .then(response => {
+        this.mails = response.data.response;
+        console.log(this.mails);
         
       })
 
@@ -27,7 +35,7 @@ createApp({
 
   mounted(){
 
-    this.getApi();
+    this.getMails();
 
 
   },
